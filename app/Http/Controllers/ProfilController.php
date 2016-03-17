@@ -26,7 +26,7 @@ class ProfilController extends Controller {
         if ($request->user())
         {
             $user = $request->user();
-            return view('edit_profil.edit')->with(compact('user'));
+            return view('profil.edit')->with(compact('user'));
         }
     }
 

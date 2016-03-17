@@ -44,23 +44,23 @@ Route::group(['middleware' => 'web'], function () {
 
 
 
-    Route::get('/edit_profil', function () {
+    Route::get('/profil', function () {
         return view ('profil.show');
     }) ;
 
-    Route::get('/edit_profil', function () {
+    Route::get('/profil', function () {
         return view ('profil.update');
     }) ;
 
     Route::get('/edit', function () {
-        return view ('edit_profil.edit');
+        return view ('profil.edit');
     }) ;
 
-    Route::get('/edit_profil/change_password', function () {
+    Route::get('/profil/change_password', function () {
         return view ('profil.edit_password');
     }) ;
 
-    Route::get('/edit_profil/change_password', function () {
+    Route::get('/profil/change_password', function () {
         return view ('profil.update_password');
     }) ;
 
