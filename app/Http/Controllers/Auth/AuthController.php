@@ -16,9 +16,16 @@ class AuthController extends Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles the registration of new users, as well as the
+<<<<<<< HEAD
     | authentication of existing users. By default, this controller uses
     | a simple trait to add these behaviors. Why don't you explore it?
     |
+=======
+    | authentication of existing users. Hello By default, this controller uses
+    | a simple trait to add these behaviors. Why don't you explore it?
+    |
+    |
+>>>>>>> dd6f60e6770154e4b4cbe8bcc05399490b600b40
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
