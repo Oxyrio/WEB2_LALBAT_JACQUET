@@ -26,43 +26,44 @@
 
 Route::group(['middleware' => 'web'], function () {
 
+    // Ici, toutes les routes permettant de diriger et rediriger vers les différentes pages
+
     Route::auth();
+
+
 
     Route::get('/', function () {
         return view('welcome');
     });
 
+
+
     Route::get('/home', 'HomeController@index');
 
-    Route::get('/edit_profil', [
-        'middleware' => 'auth',
-        'as' => 'profil.show',
-        'uses' => 'ProfilController@show'
-    ]);
 
-    Route::put('/edit_profil', [
-        'middleware' => 'auth',
-        'as' => 'profil.update',
-        'uses' => 'ProfilController@edit'
-    ]);
 
-    Route::get('/edit', [
-        'middleware' => 'auth',
-        'as' => 'edit_profil.edit',
-        'uses' => 'ProfilController@edit'
-    ]);
 
-    Route::get('/edit_profil/change_password', [
-        'middleware' => 'auth',
-        'as' => 'profil.edit_password',
-        'uses' => 'ProfilController@edit_password'
-    ]);
 
-    Route::put('/edit_profil/change_password',[
-        'middleware' => 'auth',
-        'as' => 'profil.update_password',
-        'uses' => 'ProfilController@update_password'
-    ]);
+    Route::get('/edit_profil', function () {
+        return view ('profil.show');
+    }) ;
+
+    Route::get('/edit_profil', function () {
+        return view ('profil.update');
+    }) ;
+
+    Route::get('/edit', function () {
+        return view ('edit_profil.edit');
+    }) ;
+
+    Route::get('/edit_profil/change_password', function () {
+        return view ('profil.edit_password');
+    }) ;
+
+    Route::get('/edit_profil/change_password', function () {
+        return view ('profil.update_password');
+    }) ;
+
 
     Route::resource('/projets', 'ProjetController');
 
