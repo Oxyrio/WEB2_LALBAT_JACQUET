@@ -15,7 +15,13 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles= Article::all();
+        return view('articles.index')->with(compact('articles'));
+    }
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
     /**
@@ -25,7 +31,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        $users= User::all()->lists('name', 'id');
+        return view('articles.create')->with(compact('users'));
     }
 
     /**
@@ -36,7 +43,23 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request,[
+            'title' => 'required|min:10',
+            'description' => 'required|min:10'
+        ],[
+            'title.required' => 'titre obligatoire',
+            'title.min' => 'titre supérieur à 10 caractères'
+        ]);
+
+        $article = new Article();
+        $article->user_id      = $request->user()->id;
+        $article->title        = $request->title;
+        $article->description  = $request->description;
+
+        $article->save();
+        return redirect()->route('articles.show', $article->id);
+
     }
 
     /**
@@ -47,7 +70,15 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        $article= Article::where('id', $id)->first();
+
+        $comments = $article->comments;
+
+        $users= User::all()->lists('name','id');
+        if(!$article){
+            return redirect()->to('/articles');
+        }
+        return view('articles.show')->with(compact('article','comments', 'users'));
     }
 
     /**
@@ -58,7 +89,12 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $users= User::all()->lists('name','id');
+        $article = Article::find($id);
+        if(!$article){
+            return redirect()->to('/articles');
+        }
+        return view('articles.edit')->with(compact('article', 'users'));
     }
 
     /**
@@ -70,7 +106,19 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $article= Article::find($id);
+
+        if(!$article){
+            return redirect()->to('/articles');
+        }
+        $article->user_id= $request->user_id;
+        $article->title= $request->title;
+        $article->description= $request->description;
+
+        $article->save();
+
+        return redirect()->route('articles.show', $id);
     }
 
     /**
@@ -81,6 +129,12 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article= Article::find($id);
+        if(!$article){
+            return redirect()->to('/articles');
+        }
+        $article->delete();
+
+        return redirect()->route('articles.index');
     }
 }

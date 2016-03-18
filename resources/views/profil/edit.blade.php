@@ -8,6 +8,7 @@
                     <div class="panel-heading">Modification du profil</div>
 
                     <div class="panel-body">
+                        {!! Form::open(array('route' => 'post.store', $user->id)) !!}
                         {!! Form::model($user, ['route' => ['profil.update'], 'method' => 'PUT']) !!} // formulaire de modification du profil de l'utilisateur
 
                             {!! Form::text('name', old('name')) !!}
