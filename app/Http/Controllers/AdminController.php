@@ -12,8 +12,8 @@ use App\Http\Requests;
 class AdminController extends Controller
 {
     public function __construct()
-    {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+    {  //ici ça sert à faire en sorte que seuls les Admin puissent accéder à la partie Administrateur
+        $this->middleware('AdminMiddleware', ['only' => [/*Ici on devra mettre pour l'accès à la partie Administrateur*/]]);
     }
 
     public function index()
