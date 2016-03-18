@@ -49,7 +49,7 @@ Route::group(['middleware' => 'web'], function () {
     }) ;
 
     Route::get('/profil', function () {
-        return view ('profil.update');
+       // return view ('profil.update');
     }) ;
 
     Route::get('/edit', function () {
