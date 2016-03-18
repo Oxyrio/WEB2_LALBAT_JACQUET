@@ -34,9 +34,16 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        //
+        $comment = new Comment();
+        $comment->user_id      = $request->user()->id;
+        $comment->article_id        = $request->article_id;
+        $comment->com  = $request->com;
+        $comment->save();
+        return redirect()->route('articles.show', $comment->article_id);
+
     }
 
     /**
