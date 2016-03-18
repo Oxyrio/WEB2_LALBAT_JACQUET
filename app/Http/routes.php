@@ -60,9 +60,15 @@ Route::group(['middleware' => 'web'], function () {
         return view ('profil.edit_password');
     }) ;
 
-    Route::get('/profil/change_password', function () {
-        return view ('profil.update_password');
+    Route::get('/projets', function () {
+        return view ('projets.show');
     }) ;
+
+    Route::get('/projets/edit', function () {
+        return view ('projets.edit');
+    }) ;
+
+    Route::get('/projets', 'PostController');
 
 
     Route::resource('/projets', 'ProjetController');
