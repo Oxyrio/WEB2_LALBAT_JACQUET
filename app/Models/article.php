@@ -17,3 +17,5 @@ class Article extends Model
         return $this->hasmany('App\Models\Comment');
     }
 }
+
+//Hello
