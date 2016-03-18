@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Article n° </h1> //montre un article en particulier
+    <h1>Article n° </h1>
+    //montre un article en particulier
 
     <h2>{{$articles->title}}</h2>
     <h3>Auteur: {{ $articles->user->name }}</h3>
