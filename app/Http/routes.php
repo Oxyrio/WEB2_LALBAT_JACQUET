@@ -37,7 +37,11 @@ Route::group(['middleware' => 'web'], function () {
     });
 
 
+
     Route::get('/home', 'HomeController@index');
+
+
+
 
 
     Route::get('/profil', function () {
@@ -45,7 +49,7 @@ Route::group(['middleware' => 'web'], function () {
     }) ;
 
     Route::get('/profil', function () {
-        return view ('profil.show');
+        // return view ('profil.update');
     }) ;
 
     Route::get('/edit', function () {
@@ -64,7 +68,3 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('/projets', 'ProjetController');
 
 });
-
-
-
-
