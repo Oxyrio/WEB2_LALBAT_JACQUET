@@ -37,11 +37,7 @@ Route::group(['middleware' => 'web'], function () {
     });
 
 
-
     Route::get('/home', 'HomeController@index');
-
-
-
 
 
     Route::get('/profil', function () {
@@ -49,7 +45,7 @@ Route::group(['middleware' => 'web'], function () {
     }) ;
 
     Route::get('/profil', function () {
-        return view ('profil.update');
+        return view ('profil.show');
     }) ;
 
     Route::get('/edit', function () {
