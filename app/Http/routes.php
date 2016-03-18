@@ -45,14 +45,14 @@ Route::group(['middleware' => 'web'], function () {
 
 
     Route::get('/profil', function () {
-        return view ('profil.show');
+        return view ('show');
     }) ;
 
     Route::get('/profil', function () {
-        // return view ('profil.update');
+        return view ('profil.update');
     }) ;
 
-    Route::get('/edit', function () {
+    Route::get('profil/edit', function () {
         return view ('profil.edit');
     }) ;
 
